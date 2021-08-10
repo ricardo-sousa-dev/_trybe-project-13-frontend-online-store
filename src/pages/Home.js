@@ -11,6 +11,7 @@ class Home extends React.Component {
           <SearchBar />
           <ButtonCart />
         </div>
+        <SearchBar />
         <MsgSearch />
       </main>
     );
