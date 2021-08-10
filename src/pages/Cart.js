@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ButtonCart from '../components/ButtonCart';
 import CartEmpt from '../components/CartEmpt';
 
@@ -13,14 +14,15 @@ class Home extends React.Component {
   render() {
     return (
       <div className="cart">
-        <main>
+        <Link to="/">
           <i className="fas fa-undo" />
+        </Link>
+        <main>
+          <br />
           <ButtonCart />
-          <h1>Carrinho de Compras</h1>
+          <h2>Carrinho de Compras</h2>
         </main>
-        <div className="">
-          <CartEmpt />
-        </div>
+        <CartEmpt />
       </div>
     );
   }
