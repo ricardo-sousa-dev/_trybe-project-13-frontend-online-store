@@ -1,8 +1,17 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
+  // constructor (props){
+  //   super(props);
+
+  //   this.state {
+  //     search: ''
+  //   };
+  // }
+
   render() {
-    return <input id="msg-search" type="text" />;
+    const { onChange } = this.props;
+    return <input data-testid="query-input" type="text" name="searchInput" onChange={ onChange } />;
   }
 }
 

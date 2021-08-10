@@ -3,6 +3,7 @@ import SearchBar from '../components/SearchBar';
 import MsgSearch from '../components/MsgSearch';
 import ButtonCart from '../components/ButtonCart';
 import CategoriesList from '../components/CategoriesList';
+import ProductList from '../components/ProductList';
 
 class Home extends React.Component {
   render() {
@@ -14,6 +15,7 @@ class Home extends React.Component {
             <ButtonCart />
           </div>
           <MsgSearch />
+          <ProductList />
         </main>
         <aside>
           <CategoriesList />
