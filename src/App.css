@@ -1,5 +1,5 @@
-.searchBar{
-  display:flex;
+.searchBar {
+  display: flex;
   padding: 10px;
   flex-wrap: nowrap;
   width: 100%;
@@ -7,7 +7,7 @@
 }
 
 .searchBar input {
-  width:80%;
+  width: 80%;
   margin-right: 20px;
   border-radius: 40px;
   border: 1px solid black;
@@ -15,13 +15,13 @@
 }
 
 .initialMessage {
-font-size: 8px;
-text-align:center;
+  font-size: 8px;
+  text-align: center;
 }
 
 .buttonCart {
-  border:none;
-  background-color:white;
+  border: none;
+  background-color: white;
 }
 
 .buttonCart i {
@@ -29,9 +29,9 @@ text-align:center;
 }
 
 .cart {
-  display:flex;
-  flex-direction:column;
-  width:100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   margin: 20px;
 }
 .cart main {
