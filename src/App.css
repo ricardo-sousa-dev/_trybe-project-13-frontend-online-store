@@ -1,5 +1,5 @@
-.searchBar{
-  display:flex;
+.searchBar {
+  display: flex;
   padding: 10px;
   flex-wrap: nowrap;
   width: 100%;
@@ -7,7 +7,7 @@
 }
 
 .searchBar input {
-  width:80%;
+  width: 80%;
   margin-right: 20px;
   border-radius: 40px;
   border: 1px solid black;
@@ -15,6 +15,51 @@
 }
 
 .initialMessage {
-font-size: 8px;
-text-align:center;
+  font-size: 8px;
+  text-align: center;
+}
+
+.buttonCart {
+  border: none;
+  background-color: white;
+}
+
+.buttonCart i {
+  color: black;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px;
+}
+.cart main {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.cart main h2 {
+  font-size: 12px;
+}
+
+.cart i {
+  color: black;
+}
+
+.cartEmpty {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  font-size: 10px;
+}
+
+.cartEmpty i {
+  font-size: 40px;
 }

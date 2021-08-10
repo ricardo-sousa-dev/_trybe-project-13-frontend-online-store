@@ -5,7 +5,7 @@ class ButtonCart extends React.Component {
   render() {
     return (
       <div>
-        <button type="button">
+        <button className="buttonCart" type="button">
           <Link to="/cart" data-testid="shopping-cart-button">
             <i className="fas fa-shopping-cart" />
           </Link>
