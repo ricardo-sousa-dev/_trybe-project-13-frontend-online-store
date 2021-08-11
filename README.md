@@ -578,7 +578,7 @@ O que será verificado:
 
 Avaliações positivas de um produto contribuem para boas vendas e nos dão insumos para, no tempo, destacarmos os produtos melhores e fazermos anúncios direcionados. Produtos ruins, de forma análoga, podem eventualmente ser penalizados por avaliações ruins.
 
-  * Adicione um campo de texto para que a pessoa que utiliza a aplicação possa escrever algo sobre o produto.
+  * Adicione um campo de textarea para que a pessoa que utiliza a aplicação possa escrever algo sobre o produto.
   * Adicione o atributo `data-testid` com o valor `product-detail-evaluation` no campo de texto.
 
 O que será verificado:
