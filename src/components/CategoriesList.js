@@ -22,19 +22,26 @@ class CategoriesList extends React.Component {
     onClick(undefined, id);
   }
 
+  renderProductsWithKeyboard = (event, id) => {
+    const { onClick } = this.props;
+    if (event.keyCode === 13) {
+      onClick(undefined, id);
+    }
+  }
+
   render() {
     const { categories } = this.state;
     return (
       <ul className="categories">
         { categories.map((categorie) => (
-          <li
-            type="button"
+          <div
             key={ categorie.id }
             onClick={ () => this.renderProducts(categorie.id) }
+            onKeyDown={ (event) => this.renderProductsWithKeyboard(event, categorie.id) }
             data-testid="category"
           >
             { categorie.name }
-          </li>
+          </div>
         ))}
       </ul>
     );
