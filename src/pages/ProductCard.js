@@ -5,6 +5,7 @@ class ProductCard extends React.Component {
   addCart() {
     console.log(this.props);
   }
+
   render() {
     const { product: { title, price, thumbnail } } = this.props;
 
@@ -16,6 +17,7 @@ class ProductCard extends React.Component {
           R$
           {price}
         </p>
+
         <button
           className="productCardButton"
           type="submit"

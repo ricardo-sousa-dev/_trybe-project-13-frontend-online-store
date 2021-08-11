@@ -41,7 +41,6 @@ class Home extends React.Component {
           <ProductList products={ products } />
         </div>
       </div>
-      </main>
     );
   }
 }
