@@ -10,6 +10,7 @@ class Home extends React.Component {
   //   itensCart: 0,
   // };
   // }
+  // comment
 
   render() {
     return (
