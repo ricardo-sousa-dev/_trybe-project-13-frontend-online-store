@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import * as api from '../services/api';
 
 class CategoriesList extends React.Component {
-  // Declarar categorias em um estado como um array inicialmente vazio; Fazer requisição da API com a função das categorias quando a página for montada (ComponentWillMount); Atualizar o estado de categorias com o resultado dessa requisição; Colocar esse resultado em uma lista
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       categories: [],
@@ -17,12 +17,22 @@ class CategoriesList extends React.Component {
     getCategories().then((categorie) => this.setState({ categories: categorie }));
   }
 
+  renderProducts =(id) => {
+    const { onClick } = this.props;
+    onClick(undefined, id);
+  }
+
   render() {
     const { categories } = this.state;
     return (
       <ul className="categories">
         { categories.map((categorie) => (
-          <li key={ categorie.id } data-testid="category">
+          <li
+            key={ categorie.id }
+            onClick={ () => this.renderProducts(categorie.id) }
+            aria-hidden="true" // Com base em: https://stackoverflow.com/questions/54274473/how-to-fix-static-html-elements-with-event-handlers-require-a-role
+            data-testid="category"
+          >
             { categorie.name }
           </li>
         ))}
@@ -30,5 +40,9 @@ class CategoriesList extends React.Component {
     );
   }
 }
+
+CategoriesList.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default CategoriesList;

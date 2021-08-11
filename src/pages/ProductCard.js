@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 class ProductCard extends React.Component {
   addCart() {
-    console.log(this.props);
   }
 
   render() {
