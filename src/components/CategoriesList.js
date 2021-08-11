@@ -22,26 +22,19 @@ class CategoriesList extends React.Component {
     onClick(undefined, id);
   }
 
-  renderProductsWithKeyboard = (event, id) => {
-    const { onClick } = this.props;
-    if (event.keyCode === 13) {
-      onClick(undefined, id);
-    }
-  }
-
   render() {
     const { categories } = this.state;
     return (
       <ul className="categories">
         { categories.map((categorie) => (
-          <div
+          <li
             key={ categorie.id }
             onClick={ () => this.renderProducts(categorie.id) }
-            onKeyDown={ (event) => this.renderProductsWithKeyboard(event, categorie.id) }
+            aria-hidden="true" // Com base em: https://stackoverflow.com/questions/54274473/how-to-fix-static-html-elements-with-event-handlers-require-a-role
             data-testid="category"
           >
             { categorie.name }
-          </div>
+          </li>
         ))}
       </ul>
     );
