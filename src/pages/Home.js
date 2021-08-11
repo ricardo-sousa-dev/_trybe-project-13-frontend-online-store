@@ -15,7 +15,7 @@ class Home extends React.Component {
     };
   }
 
-  fetchProducts = async (query, categoryId = '') => {
+  fetchProducts = async (query, categoryId) => {
     const getProducts = await API.getProductsFromCategoryAndQuery(categoryId, query);
     this.setState({
       products: [...getProducts.results],
@@ -27,21 +27,18 @@ class Home extends React.Component {
 
     return (
       <div className="home">
-        <main>
-          <section className="searchBar">
-            <SearchBar onClick={ this.fetchProducts } />
-            <ButtonCart />
-          </section>
+        <main className="searchBar">
+          <SearchBar onClick={ this.fetchProducts } />
+          <ButtonCart />
         </main>
         <aside>
-          <CategoriesList />
+          <CategoriesList onClick={ this.fetchProducts } />
         </aside>
         <div className="resultSearch">
           <MsgSearch />
           <ProductList products={ products } />
         </div>
       </div>
-      </main>
     );
   }
 }
