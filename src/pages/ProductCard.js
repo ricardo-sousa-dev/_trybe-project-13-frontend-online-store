@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 class ProductCard extends React.Component {
   addCart() {
-    console.log(this.props);
   }
+
   render() {
     const { product: { title, price, thumbnail } } = this.props;
 
