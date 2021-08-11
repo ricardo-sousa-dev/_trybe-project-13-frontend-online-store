@@ -26,24 +26,21 @@ class Home extends React.Component {
     const { products } = this.state;
 
     return (
-      <main>
-
-        <section>
-
-          <div className="searchBar">
+      <div className="home">
+        <main>
+          <section className="searchBar">
             <SearchBar onClick={ this.fetchProducts } />
-            <ProductList products={ products } />
             <ButtonCart />
-          </div>
-
-          <MsgSearch />
-
-        </section>
-
+          </section>
+        </main>
         <aside>
           <CategoriesList />
         </aside>
-
+        <div className="resultSearch">
+          <MsgSearch />
+          <ProductList products={ products } />
+        </div>
+      </div>
       </main>
     );
   }

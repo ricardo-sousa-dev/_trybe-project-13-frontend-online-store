@@ -24,6 +24,7 @@ class Home extends React.Component {
           <h2>Carrinho de Compras</h2>
         </main>
         <CartEmpt />
+        <button type="submit" data-testid="checkout-products">Finalizar compra</button>
       </div>
     );
   }

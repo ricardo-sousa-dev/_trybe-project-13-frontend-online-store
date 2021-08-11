@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="searchBar">
         <input data-testid="query-input" type="text" onChange={ this.handleChange } />
         <button
           type="submit"

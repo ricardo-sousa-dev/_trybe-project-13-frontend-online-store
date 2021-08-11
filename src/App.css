@@ -1,21 +1,44 @@
+
+.home {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
+/* main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 10px;
+  width: 100%;
+} */
+
+/* body{
+  width:100%;
+  display: flex;
+  flex-direction:row;
+} */
+
 .searchBar {
   align-items: center;
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
   padding: 10px;
   width: 100%;
-}
 
 .searchBar input {
   border: 1px solid black;
   border-radius: 40px;
-  height: 10px;
-  margin-right: 20px;
-  width: 80%;
+  height: 20px;
+  margin-right: 10px;
+  width: 60%;
 }
 
 .initialMessage {
-  font-size: 8px;
+  font-size: 12px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
@@ -26,6 +49,8 @@
 
 .buttonCart i {
   color: black;
+  font-size: 30px;
+  margin-right: 20px;
 }
 
 .cart {
@@ -63,4 +88,57 @@
 
 .cartEmpty i {
   font-size: 40px;
+}
+
+.categories {
+  margin: 10px;
+  padding: 0;
+  width: 200px;
+}
+
+.categories li {
+  font-size: 14px;
+  list-style: none;
+}
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productCard {
+  align-content: space-between;
+  border: 1px solid rgba(128, 128, 128, 0.301);
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 10px;
+  width: 250px;
+}
+
+.productCardTitle {
+  font-size: 16px;
+  text-align: center;
+}
+
+.productCardThumbnail {
+  align-self: center;
+  width: 150px;
+}
+
+.productCardPrice {
+  font-size: 14px;
+}
+
+.productCardButton {
+  background-color: green;
+  color: white;
+  font-size: 14px;
+  height: 40px;
+}
+
+.resultSearch {
+  width: 100%;
 }
