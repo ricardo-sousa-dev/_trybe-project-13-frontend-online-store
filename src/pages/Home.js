@@ -16,14 +16,11 @@ class Home extends React.Component {
   }
 
   fetchProducts = async (query, categoryId = '') => {
-    const getProducts = await API.getProductsFromCategoryAndQuery(
-      categoryId,
-      query,
-    );
+    const getProducts = await API.getProductsFromCategoryAndQuery(categoryId, query);
     this.setState({
       products: [...getProducts.results],
     });
-  };
+  }
 
   render() {
     const { products } = this.state;
@@ -36,16 +33,15 @@ class Home extends React.Component {
             <ButtonCart />
           </section>
         </main>
-
         <aside>
           <CategoriesList />
         </aside>
-
         <div className="resultSearch">
           <MsgSearch />
           <ProductList products={ products } />
         </div>
       </div>
+      </main>
     );
   }
 }
