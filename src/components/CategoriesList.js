@@ -20,7 +20,7 @@ class CategoriesList extends React.Component {
   render() {
     const { categories } = this.state;
     return (
-      <ul>
+      <ul className="categories">
         { categories.map((categorie) => (
           <li key={ categorie.id } data-testid="category">
             { categorie.name }

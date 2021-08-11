@@ -1,45 +1,71 @@
-.searchBar {
+.home {
   display: flex;
-  padding: 10px;
-  flex-wrap: nowrap;
+  flex-flow: column nowrap;
   width: 100%;
+}
+
+/* main {
   align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 10px;
+  width: 100%;
+} */
+
+/* body{
+  width:100%;
+  display: flex;
+  flex-direction:row;
+} */
+
+.searchBar {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
 }
 
 .searchBar input {
-  width: 80%;
-  margin-right: 20px;
-  border-radius: 40px;
   border: 1px solid black;
-  height: 10px;
+  border-radius: 40px;
+  height: 20px;
+  margin-right: 10px;
+  width: 60%;
 }
 
 .initialMessage {
-  font-size: 8px;
+  font-size: 12px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .buttonCart {
-  border: none;
   background-color: white;
+  border: none;
 }
 
 .buttonCart i {
   color: black;
+  font-size: 30px;
+  margin-right: 20px;
 }
 
 .cart {
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin: 20px;
-}
-.cart main {
   width: 100%;
+}
+
+.cart main {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   margin-top: 10px;
+  width: 100%;
 }
 
 .cart main h2 {
@@ -51,15 +77,68 @@
 }
 
 .cartEmpty {
-  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 10px;
   font-size: 10px;
+  justify-content: center;
+  padding-top: 10px;
+  width: 100%;
 }
 
 .cartEmpty i {
   font-size: 40px;
+}
+
+.categories {
+  margin: 10px;
+  padding: 0;
+  width: 200px;
+}
+
+.categories li {
+  font-size: 14px;
+  list-style: none;
+}
+
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productCard {
+  align-content: space-between;
+  border: 1px solid rgba(128, 128, 128, 0.301);
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 10px;
+  width: 250px;
+}
+
+.productCardTitle {
+  font-size: 16px;
+  text-align: center;
+}
+
+.productCardThumbnail {
+  align-self: center;
+  width: 150px;
+}
+
+.productCardPrice {
+  font-size: 14px;
+}
+
+.productCardButton {
+  background-color: green;
+  color: white;
+  font-size: 14px;
+  height: 40px;
+}
+
+.resultSearch {
+  width: 100%;
 }
