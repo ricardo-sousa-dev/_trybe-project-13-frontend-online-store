@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 class Checkout extends React.Component {
   render() {
+    const localStorageProducts = JSON.parse(localStorage.getItem('cartProducts'));
     return (
       <div className="checkout">
         <Link to="/cart">
@@ -10,8 +11,24 @@ class Checkout extends React.Component {
         </Link>
         <div className="reviewProducts">
           <h3>Revise seus Produtos</h3>
+          <ul>
+            {localStorageProducts.map((product) => (
+              <li data-testid="shopping-cart-product-name" key={ product.id }>
+                { product.title }
+              </li>
+            ))}
+          </ul>
+
+          <ul>
+            {localStorageProducts.map((product) => (
+              <li data-testid="shopping-cart-product-quantity" key={ product.id }>
+                { product.quantity }
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="infoBuyer">
+        <h3>Informações pessoais</h3>
           <input
             type="text"
             placeholder="Nome Completo"
