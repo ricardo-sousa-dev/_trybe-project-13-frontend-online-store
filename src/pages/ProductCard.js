@@ -3,44 +3,40 @@ import PropTypes from 'prop-types';
 
 class ProductCard extends React.Component {
   addToCart = () => {
-    const {
-      product: { title, price, thumbnail },
-    } = this.props;
+    const { product: { title, price, thumbnail } } = this.props;
+
     const localStorageProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
     if (!localStorageProducts) {
       const quantity = 1;
       const productInfo = { title, price, thumbnail, quantity };
+
       localStorageProducts.push(productInfo);
+
       localStorage.setItem('cartProducts', '');
-      localStorage.setItem(
-        'cartProducts',
-        JSON.stringify(localStorageProducts),
-      );
+      localStorage.setItem('cartProducts', JSON.stringify(localStorageProducts));
     } else {
-      const findProduct = localStorageProducts.find(
-        (product) => product.title === title,
-      );
-      if (findProduct) {
-        findProduct.quantity += 1;
-        localStorage.setItem('cartProducts', JSON.stringify(localStorageProducts));
-      } else {
+      const findProduct = localStorageProducts.find((product) => product.title === title);
+
+      if (!findProduct) {
         const quantity = 1;
         const productInfo = { title, price, thumbnail, quantity };
+
         localStorageProducts.push(productInfo);
+
         localStorage.setItem('cartProducts', '');
-        localStorage.setItem(
-          'cartProducts',
-          JSON.stringify(localStorageProducts),
-        );
+        localStorage.setItem('cartProducts', JSON.stringify(localStorageProducts));
+      } else {
+        findProduct.quantity += 1;
+
+        localStorage.setItem('cartProducts', '');
+        localStorage.setItem('cartProducts', JSON.stringify(localStorageProducts));
       }
     }
   };
 
   render() {
-    const {
-      product: { title, price, thumbnail },
-    } = this.props;
+    const { product: { title, price, thumbnail } } = this.props;
 
     return (
       <div className="productCard" data-testid="product">
@@ -61,6 +57,7 @@ class ProductCard extends React.Component {
     );
   }
 }
+
 ProductCard.propTypes = {
   product: PropTypes.shape({
     price: PropTypes.number,

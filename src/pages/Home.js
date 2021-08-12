@@ -4,7 +4,7 @@ import MsgSearch from '../components/MsgSearch';
 import ButtonCart from '../components/ButtonCart';
 import CategoriesList from '../components/CategoriesList';
 import ProductList from './ProductList';
-import * as API from '../services/api';
+import * as api from '../services/api';
 
 class Home extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Home extends React.Component {
   }
 
   fetchProducts = async (query, categoryId) => {
-    const getProducts = await API.getProductsFromCategoryAndQuery(categoryId, query);
+    const getProducts = await api.getProductsFromCategoryAndQuery(categoryId, query);
     this.setState({
       products: [...getProducts.results],
     });
