@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-
+// tela com exibição detalhada de um produto
 class ProductDetails extends Component {
   render() {
     const { location: { state } } = this.props;
