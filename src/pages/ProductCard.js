@@ -6,8 +6,7 @@ class ProductCard extends React.Component {
     const {
       product: { title, price, thumbnail },
     } = this.props;
-    const localStorageProducts =
-      JSON.parse(localStorage.getItem('cartProducts')) || [];
+    const localStorageProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
     if (!localStorageProducts) {
       const quantity = 1;
@@ -46,7 +45,7 @@ class ProductCard extends React.Component {
     return (
       <div className="productCard" data-testid="product">
         <p className="productCardTitle">{title}</p>
-        <img className="productCardThumbnail" src={thumbnail} alt={title} />
+        <img className="productCardThumbnail" src={ thumbnail } alt={ title } />
         <p className="productCardPrice">
           R$
           {price}
@@ -54,7 +53,7 @@ class ProductCard extends React.Component {
         <button
           className="productCardButton"
           type="submit"
-          onClick={this.addToCart}
+          onClick={ this.addToCart }
         >
           Adicionar ao carrinho
         </button>
