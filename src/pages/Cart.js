@@ -54,9 +54,7 @@ class Home extends React.Component {
               </li>
             ))}
           </ul>
-
-          <button type="submit" data-testid="checkout-products">Finalizar compra</button>
-
+          <Link to="/checkout" data-testid="checkout-products">Finalizar compra</Link>
         </div>
       </div>
     );
