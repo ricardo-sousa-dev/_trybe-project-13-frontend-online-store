@@ -53,7 +53,7 @@ class Checkout extends React.Component {
           <input type="text" placeholder="Número" />
           <input type="text" placeholder="Cidade" />
           <select name="estado">
-            <option value="estado" selected>
+            <option value="estado" defaultValue>
               Estado
             </option>
             <option value="ac">Acre</option>
