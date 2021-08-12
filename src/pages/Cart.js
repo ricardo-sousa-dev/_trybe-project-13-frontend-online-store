@@ -41,7 +41,7 @@ class Home extends React.Component {
 
           <ul>
             {localStorageProducts.map((product) => (
-              <li data-testid="shopping-cart-product-name" key={ product.id }>
+              <li data-testid="shopping-cart-product-name" key={ product.title }>
                 { product.title }
               </li>
             ))}
@@ -49,7 +49,7 @@ class Home extends React.Component {
 
           <ul>
             {localStorageProducts.map((product) => (
-              <li data-testid="shopping-cart-product-quantity" key={ product.id }>
+              <li data-testid="shopping-cart-product-quantity" key={ product.title }>
                 { product.quantity }
               </li>
             ))}
