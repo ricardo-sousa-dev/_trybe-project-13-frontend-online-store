@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ProductCard extends React.Component {
   addToLocalStorage = () => {
@@ -37,7 +38,8 @@ class ProductCard extends React.Component {
   };
 
   render() {
-    const { product: { title, price, thumbnail } } = this.props;
+    const { product } = this.props;
+    const { id, title, price, thumbnail } = product;
 
     return (
       <div className="productCard" data-testid="product">
@@ -47,6 +49,12 @@ class ProductCard extends React.Component {
           R$
           {price}
         </p>
+        <Link
+          data-testid="product-detail-link"
+          to={ { pathname: `/product-details/${id}`, state: product } }
+        >
+          Detalhes
+        </Link>
         <button
           className="productCardButton"
           data-testid="product-add-to-cart"
