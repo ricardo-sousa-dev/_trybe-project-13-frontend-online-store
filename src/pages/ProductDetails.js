@@ -9,7 +9,7 @@ class ProductDetails extends Component {
     return (
       <div>
         <Link to="/">Início</Link>
-        <h1>{ title }</h1>
+        <h1 data-testid="product-detail-name">{ title }</h1>
         <h3 data-testid="product-details-price">{ price }</h3>
         <img src={ thumbnail } alt={ title } />
         <Link to="/Cart">Carrinho</Link>
