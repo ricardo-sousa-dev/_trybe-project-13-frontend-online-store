@@ -42,27 +42,6 @@ class ProductDetails extends Component {
     }
   };
 
-  // handleRating = (event) => {
-  //   const inputRatings = document.querySelectorAll('.rating-product');
-  //   console.log(inputRatings);
-
-  //   for (let index = 0; index < inputRatings.length; index += 1) {
-  //     if (event.target.value >= inputRatings[index].value) {
-  //       inputRatings[index].checked = true;
-  //     }
-  //   }
-  // };
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const getUserEmail = document.querySelector('.email-input');
-  //   const userEmail = getUserEmail.value;
-  //   const getUserAvaliation = document.querySelector('.avaliation-input');
-  //   const userAvaliation = getUserAvaliation.value;
-  //   const saveUserEmail = localStorage.setItem('email', userEmail);
-  //   const saveUserAvaliation = localStorage.setItem('avaliation', userAvaliation);
-  // };
-
   render() {
     const { location: { state } } = this.props;
     const { title, price, thumbnail } = state;
@@ -72,8 +51,8 @@ class ProductDetails extends Component {
       <div>
 
         <Link to="/">Início</Link>
-        <h1 data-testid="product-detail-name">{ title }</h1>
-        <h3 data-testid="product-details-price">{ price }</h3>
+        <h1 data-testid="product-detail-name">{title}</h1>
+        <h3 data-testid="product-details-price">{price}</h3>
         <img src={ thumbnail } alt={ title } />
 
         <ButtonCart />
