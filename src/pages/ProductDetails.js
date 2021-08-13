@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ButtonCart from '../components/ButtonCart';
+import '../App.css';
 
 // tela com exibição detalhada de um produto
 
@@ -9,24 +10,24 @@ class ProductDetails extends Component {
   addToLocalStorage = () => {
     // const { product: { id, title, price, thumbnail } } = this.props;
     const { location: { state } } = this.props;
-    const { title, price, thumbnail } = state;
+    const { id, title, price, thumbnail } = state;
 
     const localStorageProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
     if (!localStorageProducts) {
       const quantity = 1;
-      const productInfo = { title, price, thumbnail, quantity };
+      const productInfo = { id, title, price, thumbnail, quantity };
 
       localStorageProducts.push(productInfo);
 
       localStorage.setItem('cartProducts', '');
       localStorage.setItem('cartProducts', JSON.stringify(localStorageProducts));
     } else {
-      const findProduct = localStorageProducts.find((product) => product.title === title);
+      const findProduct = localStorageProducts.find((product) => product.id === id);
 
       if (!findProduct) {
         const quantity = 1;
-        const productInfo = { title, price, thumbnail, quantity };
+        const productInfo = { id, title, price, thumbnail, quantity };
 
         localStorageProducts.push(productInfo);
 
@@ -40,6 +41,27 @@ class ProductDetails extends Component {
       }
     }
   };
+
+  // handleRating = (event) => {
+  //   const inputRatings = document.querySelectorAll('.rating-product');
+  //   console.log(inputRatings);
+
+  //   for (let index = 0; index < inputRatings.length; index += 1) {
+  //     if (event.target.value >= inputRatings[index].value) {
+  //       inputRatings[index].checked = true;
+  //     }
+  //   }
+  // };
+
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const getUserEmail = document.querySelector('.email-input');
+  //   const userEmail = getUserEmail.value;
+  //   const getUserAvaliation = document.querySelector('.avaliation-input');
+  //   const userAvaliation = getUserAvaliation.value;
+  //   const saveUserEmail = localStorage.setItem('email', userEmail);
+  //   const saveUserAvaliation = localStorage.setItem('avaliation', userAvaliation);
+  // };
 
   render() {
     const { location: { state } } = this.props;

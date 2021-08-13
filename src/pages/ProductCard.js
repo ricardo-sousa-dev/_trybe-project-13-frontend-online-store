@@ -7,7 +7,6 @@ class ProductCard extends React.Component {
     const { product: { id, title, price, thumbnail } } = this.props;
 
     const localStorageProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
-    console.log(localStorageProducts);
 
     if (!localStorageProducts) {
       const quantity = 1;
