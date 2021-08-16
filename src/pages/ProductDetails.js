@@ -12,13 +12,13 @@ class ProductDetails extends Component {
     const {
       location: { state },
     } = this.props;
-    const { title, price, thumbnail } = state;
+    const { id, title, price, thumbnail } = state;
 
     const localStorageProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
     if (!localStorageProducts) {
       const quantity = 1;
-      const productInfo = { title, price, thumbnail, quantity };
+      const productInfo = { id, title, price, thumbnail, quantity };
 
       localStorageProducts.push(productInfo);
 
@@ -29,12 +29,12 @@ class ProductDetails extends Component {
       );
     } else {
       const findProduct = localStorageProducts.find(
-        (product) => product.title === title,
+        (product) => product.id === id,
       );
 
       if (!findProduct) {
         const quantity = 1;
-        const productInfo = { title, price, thumbnail, quantity };
+        const productInfo = { id, title, price, thumbnail, quantity };
 
         localStorageProducts.push(productInfo);
 
@@ -104,7 +104,13 @@ class ProductDetails extends Component {
 }
 
 ProductDetails.propTypes = {
-  location: PropTypes.arrayOf(Object).isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      thumbnail: PropTypes.string,
+      price: PropTypes.number,
+    }) }).isRequired,
 };
 
 export default ProductDetails;
