@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 
 class ProductCard extends React.Component {
   addToLocalStorage = () => {
-    const { product: { id, title, price, thumbnail } } = this.props;
+    const {
+      product: { id, title, price, thumbnail },
+    } = this.props;
 
     const localStorageProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
@@ -15,9 +17,14 @@ class ProductCard extends React.Component {
       localStorageProducts.push(productInfo);
 
       localStorage.setItem('cartProducts', '');
-      localStorage.setItem('cartProducts', JSON.stringify(localStorageProducts));
+      localStorage.setItem(
+        'cartProducts',
+        JSON.stringify(localStorageProducts),
+      );
     } else {
-      const findProduct = localStorageProducts.find((product) => product.title === title);
+      const findProduct = localStorageProducts.find(
+        (product) => product.title === title,
+      );
 
       if (!findProduct) {
         const quantity = 1;
@@ -26,12 +33,18 @@ class ProductCard extends React.Component {
         localStorageProducts.push(productInfo);
 
         localStorage.setItem('cartProducts', '');
-        localStorage.setItem('cartProducts', JSON.stringify(localStorageProducts));
+        localStorage.setItem(
+          'cartProducts',
+          JSON.stringify(localStorageProducts),
+        );
       } else {
         findProduct.quantity += 1;
 
         localStorage.setItem('cartProducts', '');
-        localStorage.setItem('cartProducts', JSON.stringify(localStorageProducts));
+        localStorage.setItem(
+          'cartProducts',
+          JSON.stringify(localStorageProducts),
+        );
       }
     }
   };
@@ -42,18 +55,24 @@ class ProductCard extends React.Component {
 
     return (
       <div className="productCard" data-testid="product">
-        <p className="productCardTitle">{ title }</p>
+        <p className="productCardTitle">{title}</p>
+
         <img className="productCardThumbnail" src={ thumbnail } alt={ title } />
-        <p className="productCardPrice">
-          R$
-          {price}
-        </p>
-        <Link
-          data-testid="product-detail-link"
-          to={ { pathname: `/product-details/${id}`, state: product } }
-        >
-          Detalhes
-        </Link>
+
+        <div className="divDetail">
+          <p className="productCardPrice">
+            R$
+            {' '}
+            {price.toFixed(2)}
+          </p>
+          <Link
+            className="linkDetail"
+            data-testid="product-detail-link"
+            to={ { pathname: `/product-details/${id}`, state: product } }
+          >
+            Detalhes
+          </Link>
+        </div>
         <button
           className="productCardButton"
           data-testid="product-add-to-cart"
