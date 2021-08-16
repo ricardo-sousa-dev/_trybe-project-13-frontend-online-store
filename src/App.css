@@ -1,9 +1,9 @@
 .home, .productDetail {
+  color: #1d7756;
   display: flex;
   flex-flow: column nowrap;
-  width: 100%;
   font-family: Roboto;
-  color: #1d7756;
+  width: 100%;
 }
 
 .home main {
@@ -11,8 +11,8 @@
 }
 
 .searchBar {
-  background-color: #fff159;
   align-items: center;
+  background-color: #fff159;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -21,18 +21,18 @@
 }
 
 .logo {
-  width: 130px;
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  width: 130px;
 }
 
 .logo img {
-  width: 40px;
+  border-radius: 5px;
   height: 40px;
   margin-right: 10px;
-  border-radius: 5px;
+  width: 40px;
 }
 
 .nameLogo {
@@ -40,64 +40,65 @@
 }
 
 .logo h1 {
-  font-size: 18px;
-  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: bold;
-  font-style: italic;
-  margin: 0;
   color: #1d7756;
+  font-family: 'Open Sans' , 'Helvetica Neue' , sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: bold;
+  margin: 0;
 }
 
 .searchBar form {
+  align-items: center;
+  background-color: white;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 60%;
-  background-color: white;
-  padding: 5px;
   margin: 10px;
+  padding: 5px;
+  width: 60%;
 }
 
 .searchBar input {
   border: 1px solid black;
-  height: 20px;
   border: none;
+  height: 20px;
   width: 100%;
 }
 
 .searchBar input:focus {
-  box-shadow: 0;
   border: 0 none;
+  box-shadow: 0;
   outline: 0;
 }
 
 .searchButton {
-  height: 20px;
-  border-radius: 0;
-  border-color: rgba(128, 128, 128, 0.205);
   background-color: white;
+  border-bottom: none;
+  border-color: rgba(128, 128, 128, 0.205);
+  border-radius: 0;
   border-right: none;
   border-top: none;
-  border-bottom: none;
+  height: 20px;
 }
 
 .fa-search {
   color: rgba(128, 128, 128, 0.205);
 }
+
 .searchBar h3 {
   display: none;
 }
 
 .initialMessage {
+  display: none;
   font-size: 12px;
   margin-bottom: 30px;
   text-align: center;
-  display: none;
 }
 
 .buttonCart {
-  border: none;
   background-color: initial;
+  border: none;
 }
 
 .buttonCart i {
@@ -145,19 +146,19 @@
 }
 
 .categories {
+  background-color: rgba(128, 128, 128, 0.075);
+  border: 1px solid #1d775652;
+  border-radius: 5px;
+  height: 650px;
   margin: 20px 10px 20px 20px;
   padding: 10px;
   width: 250px;
-  height: 650px;
-  border: 1px solid #1d775652;
-  background-color: rgba(128, 128, 128, 0.075);
-  border-radius: 5px;
 }
 
 .categories li {
   font-size: 12px;
-  padding: 3px;
   list-style: none;
+  padding: 3px;
 }
 
 .categories li:hover {
@@ -168,13 +169,13 @@
 }
 
 .productList {
+  border: 1px solid #1d775652;
+  border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
-  border-radius: 5px;
-  border: 1px solid #1d775652;
   margin: 20px 10px 20px 0;
+  width: 100%;
 }
 
 .cardEquipe {
@@ -191,8 +192,8 @@
 
 .thumbnailEquipe {
   align-self: center;
-  width: 100px;
   border-radius: 5px;
+  width: 100px;
 }
 
 .cardEquipeTitle {
@@ -201,10 +202,10 @@
 }
 
 .msgSearch {
+  align-content: flex-start;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: flex-start;
   text-align: center;
 }
 
@@ -226,14 +227,14 @@
 
 .productCardTitle {
   font-size: 12px;
-  text-align: center;
   font-weight: bold;
+  text-align: center;
 }
 
 .productCardThumbnail {
   align-self: center;
-  width: 80px;
   height: 80px;
+  width: 80px;
 }
 
 .productCardPrice {
@@ -241,15 +242,15 @@
 }
 
 .divDetail {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .linkDetail {
   color: #1d7756;
-  text-decoration: none;
   font-size: 12px;
+  text-decoration: none;
 }
 
 .productCardButton {
@@ -260,11 +261,11 @@
 }
 
 .resultSearch {
-  width: 100%;
   display: flex;
+  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  flex-direction: row;
+  width: 100%;
 }
 
 .resultDetail {
@@ -272,23 +273,23 @@
 }
 
 .resultDetailTopo {
-  display:flex;
-  justify-content: flex-start;
   align-items: center;
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
 }
 
 .resultDetail h1 {
-  font-family: Roboto;
   color: rgba(0, 0, 0, 0.678);
+  font-family: Roboto;
   font-size: 20px;
 }
 
 .linkRota {
   color: rgba(0, 0, 0, 0.678);
-  text-decoration: none;
   font-size: 14px;
   margin: 20px;
+  text-decoration: none;
 }
 
 .productCardDetail {

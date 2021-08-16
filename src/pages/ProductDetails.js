@@ -29,7 +29,7 @@ class ProductDetails extends Component {
       );
     } else {
       const findProduct = localStorageProducts.find(
-        (product) => product.title === title,
+        (product) => product.id === id,
       );
 
       if (!findProduct) {
@@ -104,7 +104,13 @@ class ProductDetails extends Component {
 }
 
 ProductDetails.propTypes = {
-  location: PropTypes.arrayOf(Object).isRequired,
+  location: PropTypes.shape({
+    state: PropTypes.shape({
+      id: PropTypes.string,
+      title: PropTypes.string,
+      thumbnail: PropTypes.string,
+      price: PropTypes.number,
+    }) }).isRequired,
 };
 
 export default ProductDetails;
