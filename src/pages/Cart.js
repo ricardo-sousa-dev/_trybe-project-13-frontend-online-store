@@ -8,56 +8,99 @@ class Cart extends React.Component {
     super(props);
 
     this.state = {
-      change: 0,
-      // render: false,
+      emptyCart: true,
+      renderList: [],
     };
   }
 
-  handleClick = (e) => {
+  componentDidMount() {
+    this.renderCurrentProducts();
+  }
+
+  renderCurrentProducts = () => {
+    if (!localStorage.cartProducts || localStorage.cartProducts === '[]') {
+      this.setState({ emptyCart: true });
+      return;
+    }
+
     const currentProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const { change } = this.state;
+    const renderList = currentProducts
+      .map((product) => (
 
-    if (e.target.className === 'buttonRemoveFromCart') {
-      const updatedProducts = currentProducts
-        .filter((product) => product.id !== e.target.id);
+        <li className={ product.title } key={ product.id }>
 
-      e.target.parentNode.remove();
+          <button
+            id={ product.id }
+            className="buttonRemoveFromCart"
+            type="submit"
+            onClick={ () => this.handleClick(product.id, 'X') }
+          >
+            X
+          </button>
 
-      localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
+          <img
+            className="imgProductCart"
+            src={ product.thumbnail }
+            alt={ product.title }
+          />
+
+          <p data-testid="shopping-cart-product-name">{product.title}</p>
+
+          <button
+            id={ product.id }
+            className="buttonDecreaseQuantity"
+            data-testid="product-decrease-quantity"
+            type="submit"
+            onClick={ () => this.handleClick(product.id, '-') }
+          >
+            -
+          </button>
+
+          <p data-testid="shopping-cart-product-quantity">{product.quantity}</p>
+
+          <button
+            id={ product.id }
+            className="buttonIncreaseQuantity"
+            data-testid="product-increase-quantity"
+            type="submit"
+            onClick={ () => this.handleClick(product.id, '+') }
+          >
+            +
+          </button>
+
+          <p>
+            R$
+            {product.price}
+          </p>
+
+        </li>
+
+      ));
+    this.setState({ emptyCart: false, renderList });
+  }
+
+  handleClick = (id, action) => {
+    const currentProducts = JSON.parse(localStorage.getItem('cartProducts'));
+    const index = currentProducts
+      .indexOf(currentProducts.find((product) => product.id === id));
+
+    if (action === '+') {
+      currentProducts[index].quantity += 1;
     }
-
-    if (e.target.className === 'buttonDecreaseQuantity') {
-      const indexItemDecrease = currentProducts
-        .indexOf(currentProducts.find((product) => product.id === e.target.id));
-
-      if (currentProducts[indexItemDecrease].quantity > 1) {
-        currentProducts[indexItemDecrease].quantity -= 1;
-
-        localStorage.setItem('cartProducts', JSON.stringify(currentProducts));
-      } else {
-        const updatedProducts = currentProducts
-          .filter((product) => product.id !== e.target.id);
-
-        e.target.parentNode.remove();
-
-        localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
-      }
+    if (action === '-') {
+      currentProducts[index].quantity -= 1;
     }
-
-    if (e.target.className === 'buttonIncreaseQuantity') {
-      const indexItemIncrease = currentProducts
-        .indexOf(currentProducts.find((product) => product.id === e.target.id));
-      this.setState({ change: 1 });
-      currentProducts[indexItemIncrease].quantity += change;
-      localStorage.setItem('cartProducts', JSON.stringify(currentProducts));
+    if (action === 'X' || currentProducts[index].quantity <= 0) {
+      currentProducts.splice(index, 1);
     }
-    // this.setState((prevState) => ({ render: !prevState.render }));
+    localStorage.setItem('cartProducts', JSON.stringify(currentProducts));
+    this.renderCurrentProducts();
   }
 
   render() {
-    const currentProducts = JSON.parse(localStorage.getItem('cartProducts'));
+    const { emptyCart, renderList } = this.state;
 
-    if (!currentProducts || currentProducts === []) {
+    if (emptyCart === true) {
       return (
 
         <div>
@@ -73,9 +116,11 @@ class Cart extends React.Component {
     return (
 
       <div className="cart">
+
         <Link to="/">
           <i className="fas fa-undo" />
         </Link>
+
         <main>
           <br />
           <ButtonCart />
@@ -86,58 +131,7 @@ class Cart extends React.Component {
 
           <ul className="listProductsCart">
 
-            {currentProducts
-              .map((product) => (
-
-                <li className={ product.title } key={ product.id }>
-
-                  <button
-                    id={ product.id }
-                    className="buttonRemoveFromCart"
-                    type="submit"
-                    onClick={ this.handleClick }
-                  >
-                    X
-                  </button>
-
-                  <img
-                    className="imgProductCart"
-                    src={ product.thumbnail }
-                    alt={ product.title }
-                  />
-
-                  <p data-testid="shopping-cart-product-name">{product.title}</p>
-
-                  <button
-                    id={ product.id }
-                    className="buttonDecreaseQuantity"
-                    data-testid="product-decrease-quantity"
-                    type="submit"
-                    onClick={ this.handleClick }
-                  >
-                    -
-                  </button>
-
-                  <p data-testid="shopping-cart-product-quantity">{product.quantity}</p>
-
-                  <button
-                    id={ product.id }
-                    className="buttonIncreaseQuantity"
-                    data-testid="product-increase-quantity"
-                    type="submit"
-                    onClick={ this.handleClick }
-                  >
-                    +
-                  </button>
-
-                  <p>
-                    R$
-                    {product.price}
-                  </p>
-
-                </li>
-
-              ))}
+            {renderList}
 
           </ul>
 

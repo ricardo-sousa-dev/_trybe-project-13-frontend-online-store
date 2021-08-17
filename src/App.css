@@ -2,7 +2,7 @@
   color: #1d7756;
   display: flex;
   flex-flow: column nowrap;
-  font-family: Roboto;
+  font-family: Roboto , sans-serif;
   width: 100%;
 }
 
@@ -41,10 +41,10 @@
 
 .logo h1 {
   color: #1d7756;
-  font-family: 'Open Sans' , 'Helvetica Neue' , sans-serif;
+  font-family: Open Sans , Helvetica Neue , sans-serif;
   font-size: 18px;
   font-style: italic;
-  font-weight: bold;
+  font-weight: 900;
   margin: 0;
 }
 
@@ -59,8 +59,7 @@
 }
 
 .searchBar input {
-  border: 1px solid black;
-  border: none;
+  border: 1px solid black none;
   height: 20px;
   width: 100%;
 }
@@ -227,7 +226,7 @@
 
 .productCardTitle {
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 900;
   text-align: center;
 }
 
@@ -262,8 +261,8 @@
 
 .resultSearch {
   display: flex;
+  flex-flow: nowrap;
   flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-between;
   width: 100%;
 }
@@ -281,7 +280,7 @@
 
 .resultDetail h1 {
   color: rgba(0, 0, 0, 0.678);
-  font-family: Roboto;
+  font-family: Roboto , sans-serif;
   font-size: 20px;
 }
 
@@ -310,7 +309,7 @@
 
 .productCardPriceDetail {
   font-size: 18px;
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 .imgProductCart {
