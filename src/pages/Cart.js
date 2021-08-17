@@ -8,70 +8,71 @@ class Cart extends React.Component {
     super(props);
 
     this.state = {
-      change: 0,
-      // render: false,
+      // change: 0,
+      render: false,
     };
   }
 
-  handleClick = (e) => {
+  changeQuantity = (e) => {
+    const { render } = this.state;
+
     const currentProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const { change } = this.state;
 
-    if (e.target.className === 'buttonRemoveFromCart') {
-      const updatedProducts = currentProducts
-        .filter((product) => product.id !== e.target.id);
-
+    if (e.target.className === 'buttonDecreaseQuantity') {
+      const updatedProducts = currentProducts.filter(
+        (product) => product.id !== e.target.id,
+      );
       e.target.parentNode.remove();
-
       localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
+      this.setState({ render: true });
     }
 
     if (e.target.className === 'buttonDecreaseQuantity') {
-      const indexItemDecrease = currentProducts
-        .indexOf(currentProducts.find((product) => product.id === e.target.id));
+      const indexItemIncrease = currentProducts.indexOf(
+        currentProducts.find((product) => product.id === e.target.id),
+      );
 
-      if (currentProducts[indexItemDecrease].quantity > 1) {
-        currentProducts[indexItemDecrease].quantity -= 1;
-
-        localStorage.setItem('cartProducts', JSON.stringify(currentProducts));
-      } else {
-        const updatedProducts = currentProducts
-          .filter((product) => product.id !== e.target.id);
-
+      if (currentProducts[indexItemIncrease].quantity === 1) {
+        const updatedProducts = currentProducts.filter(
+          (product) => product.id !== e.target.id,
+        );
         e.target.parentNode.remove();
-
         localStorage.setItem('cartProducts', JSON.stringify(updatedProducts));
+        this.setState({ render: true });
       }
+      currentProducts[indexItemIncrease].quantity -= 1;
+      localStorage.setItem('cartProducts', JSON.stringify(currentProducts));
+      this.setState({ render: true });
     }
 
     if (e.target.className === 'buttonIncreaseQuantity') {
-      const indexItemIncrease = currentProducts
-        .indexOf(currentProducts.find((product) => product.id === e.target.id));
-      this.setState({ change: 1 });
-      currentProducts[indexItemIncrease].quantity += change;
+      const indexItemIncrease = currentProducts.indexOf(
+        currentProducts.find((product) => product.id === e.target.id),
+      );
+
+      currentProducts[indexItemIncrease].quantity += 1;
+
       localStorage.setItem('cartProducts', JSON.stringify(currentProducts));
+
+      this.setState({ render: true });
     }
-    // this.setState((prevState) => ({ render: !prevState.render }));
-  }
+  };
 
   render() {
     const currentProducts = JSON.parse(localStorage.getItem('cartProducts'));
 
     if (!currentProducts || currentProducts === []) {
       return (
-
         <div>
           <CartEmpt />
           <Link to="/">
             <i className="fas fa-undo" />
           </Link>
         </div>
-
       );
     }
 
     return (
-
       <div className="cart">
         <Link to="/">
           <i className="fas fa-undo" />
@@ -83,72 +84,63 @@ class Cart extends React.Component {
         </main>
 
         <div className="productList">
-
           <ul className="listProductsCart">
+            {currentProducts.map((product) => (
+              <li className={ product.title } key={ product.id }>
+                <button
+                  id={ product.id }
+                  className="buttonRemoveFromCart"
+                  type="submit"
+                  onClick={ this.changeQuantity }
+                >
+                  X
+                </button>
 
-            {currentProducts
-              .map((product) => (
+                <img
+                  className="imgProductCart"
+                  src={ product.thumbnail }
+                  alt={ product.title }
+                />
 
-                <li className={ product.title } key={ product.id }>
+                <p data-testid="shopping-cart-product-name">{product.title}</p>
 
-                  <button
-                    id={ product.id }
-                    className="buttonRemoveFromCart"
-                    type="submit"
-                    onClick={ this.handleClick }
-                  >
-                    X
-                  </button>
+                <button
+                  id={ product.id }
+                  className="buttonDecreaseQuantity"
+                  data-testid="product-decrease-quantity"
+                  type="submit"
+                  onClick={ this.changeQuantity }
+                >
+                  -
+                </button>
 
-                  <img
-                    className="imgProductCart"
-                    src={ product.thumbnail }
-                    alt={ product.title }
-                  />
+                <p data-testid="shopping-cart-product-quantity">
+                  {product.quantity}
+                </p>
 
-                  <p data-testid="shopping-cart-product-name">{product.title}</p>
+                <button
+                  id={ product.id }
+                  className="buttonIncreaseQuantity"
+                  data-testid="product-increase-quantity"
+                  type="submit"
+                  onClick={ this.changeQuantity }
+                >
+                  +
+                </button>
 
-                  <button
-                    id={ product.id }
-                    className="buttonDecreaseQuantity"
-                    data-testid="product-decrease-quantity"
-                    type="submit"
-                    onClick={ this.handleClick }
-                  >
-                    -
-                  </button>
-
-                  <p data-testid="shopping-cart-product-quantity">{product.quantity}</p>
-
-                  <button
-                    id={ product.id }
-                    className="buttonIncreaseQuantity"
-                    data-testid="product-increase-quantity"
-                    type="submit"
-                    onClick={ this.handleClick }
-                  >
-                    +
-                  </button>
-
-                  <p>
-                    R$
-                    {product.price}
-                  </p>
-
-                </li>
-
-              ))}
-
+                <p>
+                  R$
+                  {product.price}
+                </p>
+              </li>
+            ))}
           </ul>
 
           <Link to="/checkout" data-testid="checkout-products">
             Finalizar compra
           </Link>
-
         </div>
-
       </div>
-
     );
   }
 }
