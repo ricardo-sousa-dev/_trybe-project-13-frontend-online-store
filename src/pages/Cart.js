@@ -24,65 +24,71 @@ class Cart extends React.Component {
     }
 
     const currentProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const renderList = currentProducts
-      .map((product) => (
+    const renderList = currentProducts.map((product) => (
+      <li className="liProductCart" key={ product.id }>
+        <div className="containerDiv1">
+          <div className="liProductCartDiv1">
+            <button
+              id={ product.id }
+              className="buttonRemoveFromCart"
+              type="submit"
+              onClick={ () => this.handleClick(product.id, 'X') }
+            >
+              x
+            </button>
 
-        <li className={ product.title } key={ product.id }>
+            <img
+              className="imgProductCart"
+              src={ product.thumbnail }
+              alt={ product.title }
+            />
 
-          <button
-            id={ product.id }
-            className="buttonRemoveFromCart"
-            type="submit"
-            onClick={ () => this.handleClick(product.id, 'X') }
-          >
-            X
-          </button>
+            <p data-testid="shopping-cart-product-name">{product.title}</p>
+          </div>
+        </div>
+        <div className="containerDiv2">
+          <div className="liProductCartDiv2">
+            <button
+              id={ product.id }
+              className="buttonDecreaseQuantity"
+              data-testid="product-decrease-quantity"
+              type="submit"
+              onClick={ () => this.handleClick(product.id, '-') }
+            >
+              -
+            </button>
 
-          <img
-            className="imgProductCart"
-            src={ product.thumbnail }
-            alt={ product.title }
-          />
+            <p className="quantityCart" data-testid="shopping-cart-product-quantity">
+              {product.quantity}
+            </p>
 
-          <p data-testid="shopping-cart-product-name">{product.title}</p>
+            <button
+              id={ product.id }
+              className="buttonIncreaseQuantity"
+              data-testid="product-increase-quantity"
+              type="submit"
+              onClick={ () => this.handleClick(product.id, '+') }
+            >
+              +
+            </button>
 
-          <button
-            id={ product.id }
-            className="buttonDecreaseQuantity"
-            data-testid="product-decrease-quantity"
-            type="submit"
-            onClick={ () => this.handleClick(product.id, '-') }
-          >
-            -
-          </button>
-
-          <p data-testid="shopping-cart-product-quantity">{product.quantity}</p>
-
-          <button
-            id={ product.id }
-            className="buttonIncreaseQuantity"
-            data-testid="product-increase-quantity"
-            type="submit"
-            onClick={ () => this.handleClick(product.id, '+') }
-          >
-            +
-          </button>
-
-          <p>
-            R$
-            {product.price}
-          </p>
-
-        </li>
-
-      ));
+            <p>
+              R$
+              {' '}
+              {product.price.toFixed(2)}
+            </p>
+          </div>
+        </div>
+      </li>
+    ));
     this.setState({ emptyCart: false, renderList });
-  }
+  };
 
   handleClick = (id, action) => {
     const currentProducts = JSON.parse(localStorage.getItem('cartProducts'));
-    const index = currentProducts
-      .indexOf(currentProducts.find((product) => product.id === id));
+    const index = currentProducts.indexOf(
+      currentProducts.find((product) => product.id === id),
+    );
 
     if (action === '+') {
       currentProducts[index].quantity += 1;
@@ -95,54 +101,49 @@ class Cart extends React.Component {
     }
     localStorage.setItem('cartProducts', JSON.stringify(currentProducts));
     this.renderCurrentProducts();
-  }
+  };
 
   render() {
     const { emptyCart, renderList } = this.state;
 
     if (emptyCart === true) {
       return (
-
         <div>
           <CartEmpt />
           <Link to="/">
             <i className="fas fa-undo" />
           </Link>
         </div>
-
       );
     }
 
     return (
-
       <div className="cart">
-
-        <Link to="/">
+        {/* <Link to="/">
           <i className="fas fa-undo" />
-        </Link>
+        </Link> */}
 
         <main>
           <br />
           <ButtonCart />
           <h2>Carrinho de Compras</h2>
         </main>
+        <Link className="linkRota" to="/">
+          Início
+        </Link>
 
-        <div className="productList">
+        <div className="productListCart">
+          <ul className="listProductsCart">{renderList}</ul>
 
-          <ul className="listProductsCart">
-
-            {renderList}
-
-          </ul>
-
-          <Link to="/checkout" data-testid="checkout-products">
+          <Link
+            to="/checkout"
+            className="linkCheckout"
+            data-testid="checkout-products"
+          >
             Finalizar compra
           </Link>
-
         </div>
-
       </div>
-
     );
   }
 }
