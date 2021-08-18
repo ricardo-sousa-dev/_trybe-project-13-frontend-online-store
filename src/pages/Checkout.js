@@ -110,7 +110,7 @@ class Checkout extends React.Component {
           <div className="ticket">
             <h4>Visa</h4>
             <div>
-              <label htmlFor="visa" />
+              {/* <label htmlFor="visa" /> */}
               <input type="radio" name="visa" value="creditCard" />
               <i className="fas fa-credit-card" />
             </div>
@@ -119,7 +119,7 @@ class Checkout extends React.Component {
           <div className="ticket">
             <h4>Mastercard</h4>
             <div>
-              <label htmlFor="mastercard" />
+              {/* <label htmlFor="mastercard" /> */}
               <input type="radio" name="creditCard" value="creditCard" />
               <i className="fas fa-credit-card" />
             </div>
@@ -127,7 +127,7 @@ class Checkout extends React.Component {
           <div className="ticket">
             <h4>Elo</h4>
             <div>
-              <label htmlFor="elo" />
+              {/* <label htmlFor="elo" /> */}
               <input type="radio" name="elo" value="creditCard" />
               <i className="fas fa-credit-card" />
             </div>
