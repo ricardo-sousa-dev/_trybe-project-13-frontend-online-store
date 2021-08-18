@@ -6,11 +6,11 @@ import mockedCategoriesResult from '../__mocks__/categories';
 import mockedQueryResult from '../__mocks__/query';
 
 jest.mock('../services/api');
-api.getCategories.mockImplementation(
-  () => Promise.resolve(mockedCategoriesResult),
+api.getCategories.mockImplementation(() =>
+  Promise.resolve(mockedCategoriesResult),
 );
-api.getProductsFromCategoryAndQuery.mockImplementation(
-  () => Promise.resolve(mockedQueryResult),
+api.getProductsFromCategoryAndQuery.mockImplementation(() =>
+  Promise.resolve(mockedQueryResult),
 );
 
 describe(`11 - Avalie e comente acerca de um produto em sua tela de exibição detalhada`, () => {
@@ -20,19 +20,20 @@ describe(`11 - Avalie e comente acerca de um produto em sua tela de exibição d
     render(<App />);
     await waitFor(() => expect(api.getCategories).toHaveBeenCalled());
     fireEvent.click(screen.getAllByTestId('category')[0]);
-    await waitFor(() => expect(api.getProductsFromCategoryAndQuery).toHaveBeenCalled());
+    await waitFor(() =>
+      expect(api.getProductsFromCategoryAndQuery).toHaveBeenCalled(),
+    );
     fireEvent.click(screen.getAllByTestId('product-detail-link')[0]);
-    await waitFor(
-      () => expect(screen.getByTestId('product-detail-name')).toHaveTextContent(
+    await waitFor(() =>
+      expect(screen.getByTestId('product-detail-name')).toHaveTextContent(
         mockedQueryResult.results[0].title,
       ),
     );
-    fireEvent.change(
-      screen.getByTestId('product-detail-evaluation'),
-      { target: { value: evaluationContent } },
-    );
+    fireEvent.change(screen.getByTestId('product-detail-evaluation'){
+      target: { value: evaluationContent }
+    })
     expect(screen.getByTestId('product-detail-evaluation')).toHaveValue(
       evaluationContent,
-    );
+    )
   });
 });

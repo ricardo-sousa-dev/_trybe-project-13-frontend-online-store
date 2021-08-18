@@ -34,6 +34,6 @@ describe(`14 - Limite a quantidade de produtos adicionados ao carrinho pela quan
     fireEvent.click(screen.getAllByTestId('product-increase-quantity')[0]);
     expect(screen.getAllByTestId('shopping-cart-product-quantity')[0]).toHaveTextContent(
       mockedQueryResult.results[1].available_quantity,
-    );
+    )
   });
 });

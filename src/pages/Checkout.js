@@ -8,29 +8,41 @@ class Checkout extends React.Component {
     );
     return (
       <div className="checkout">
-        <Link to="/cart">
-          <i className="fas fa-undo" />
+        <Link className="linkRota" to="/">
+          Início
         </Link>
+        <h2>Revise seus Produtos</h2>
         <div className="reviewProducts">
-          <h3>Revise seus Produtos</h3>
           <ul>
             {localStorageProducts.map((product) => (
-              <li data-testid="shopping-cart-product-name" key={ product.id }>
-                {product.title}
+              <li
+                className="liProductCartDiv1"
+                data-testid="shopping-cart-product-name"
+                key={ product.id }
+              >
+                <div key={ product.id } className="containerDiv1">
+                  <div className="liProductCartDiv1">{product.title}</div>
+                </div>
               </li>
             ))}
           </ul>
 
-          <ul>
+          <ul className="ulQuantityCheckout">
             {localStorageProducts.map((product) => (
-              <li data-testid="shopping-cart-product-quantity" key={ product.id }>
-                {product.quantity}
+              <li
+                className="liProductCartDiv2"
+                data-testid="shopping-cart-product-quantity"
+                key={ product.id }
+              >
+                <div key={ product.id } className="containerCheckoutDiv2">
+                  <div className="liProductCartDiv2">{product.quantity}</div>
+                </div>
               </li>
             ))}
           </ul>
         </div>
+        <h2>Informações pessoais</h2>
         <div className="infoBuyer">
-          <h3>Informações pessoais</h3>
           <input
             type="text"
             placeholder="Nome Completo"
@@ -85,29 +97,40 @@ class Checkout extends React.Component {
             <option value="to">Tocantins</option>
           </select>
         </div>
+        <h2>Método de Pagamento</h2>
         <div className="paymentMethod">
-          <h3>Método de Pagamento</h3>
           <div className="ticket">
             <h4>Boleto</h4>
-            <input type="radio" name="ticket" value="ticket" />
-            <i className="fas fa-money-check-alt" />
+            <div>
+              <input type="radio" name="ticket" value="ticket" />
+              <i className="fas fa-money-check-alt" />
+            </div>
           </div>
-          <div className="creditCard">
-            <label htmlFor="visa">
-              <input type="radio" name="creditCard" value="creditCard" />
-              Visa
+
+          <div className="ticket">
+            <h4>Visa</h4>
+            <div>
+              <label htmlFor="visa" />
+              <input type="radio" name="visa" value="creditCard" />
               <i className="fas fa-credit-card" />
-            </label>
-            <label htmlFor="mastercard">
+            </div>
+          </div>
+
+          <div className="ticket">
+            <h4>Mastercard</h4>
+            <div>
+              <label htmlFor="mastercard" />
               <input type="radio" name="creditCard" value="creditCard" />
-              Mastercard
               <i className="fas fa-credit-card" />
-            </label>
-            <label htmlFor="elo">
-              <input type="radio" name="creditCard" value="creditCard" />
-              Elo
+            </div>
+          </div>
+          <div className="ticket">
+            <h4>Elo</h4>
+            <div>
+              <label htmlFor="elo" />
+              <input type="radio" name="elo" value="creditCard" />
               <i className="fas fa-credit-card" />
-            </label>
+            </div>
           </div>
         </div>
         <button type="submit" className="pay">
