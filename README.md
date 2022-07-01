@@ -31,9 +31,9 @@
 #### Instruções para visualizar o projeto
 ##### Através do terminal do seu computador:
 ###### Clone o repositório
-`git clone git@github.com:ricardo-sousa-dev/_trybe-project-28-cookmaster`
+`git clone git@github.com:ricardo-sousa-dev/_trybe-project-13-frontend-online-store.git`
 ###### Entre na pasta do repositório que você acabou de clonar:
-`cd _trybe-project-28-cookmaster`
+`cd _trybe-project-13-frontend-online-store`
 ###### Instale as dependências:
 `npm install`
 ###### Inicialize o projeto:
