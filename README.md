@@ -1,4 +1,4 @@
-# Boas vindas ao repositório do projeto de Front-End Online Store!
+# Projeto de Front-End Online Store!
 
 ### Este projeto é uma versão simplificada, sem persistência no banco de dados, de uma **loja online**, desenvolvido em grupo suas funcionalidades de acordo com demandas definidas em um quadro _Kanban_. 
 
@@ -27,3 +27,14 @@
     - [21. Destaque, na tela principal, os produtos já adicionados ao carrinho]
     - [22. Impedimento que a quantidade do produto seja negativa]
 
+
+#### Instruções para visualizar o projeto
+##### Através do terminal do seu computador:
+###### Clone o repositório
+`git clone git@github.com:ricardo-sousa-dev/_trybe-project-28-cookmaster`
+###### Entre na pasta do repositório que você acabou de clonar:
+`cd _trybe-project-28-cookmaster`
+###### Instale as dependências:
+`npm install`
+###### Inicialize o projeto:
+`npm start`
